@@ -7,12 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DesignPanel extends JPanel {
-    final MainFrame frame;
-
     List<JComponent> componentList;
 
-    public DesignPanel(MainFrame frame) {
-        this.frame = frame;
+    public List<JComponent> getComponentList() {
+        return componentList;
+    }
+
+    public void setComponentList(List<JComponent> componentList) {
+        this.componentList = componentList;
+    }
+
+    public DesignPanel() {
         componentList = new ArrayList<>();
         setLayout(null);
     }

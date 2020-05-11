@@ -21,7 +21,7 @@ public class MainFrame extends JFrame {
         setResizable(false);
 
         controlPanel = new ControlPanel(this);
-        designPanel = new DesignPanel(this);
+        designPanel = new DesignPanel();
 
         add(controlPanel, NORTH);
         add(designPanel, CENTER);
