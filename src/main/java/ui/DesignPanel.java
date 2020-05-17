@@ -24,9 +24,8 @@ public class DesignPanel extends JPanel {
 
     public void addComponent(String className, String text, int w, int h, int x, int y) throws ClassNotFoundException {
         try {
-            Class clazz = Class.forName(className);
-            JComponent component = (JComponent) clazz.newInstance();
-
+            Class<?> clazz = Class.forName(className);
+            JComponent component = (JComponent) clazz.getConstructor().newInstance();
             try {
                 Method addText = clazz.getMethod("setText", String.class);
                 addText.invoke(component, text);
@@ -39,7 +38,7 @@ public class DesignPanel extends JPanel {
             add(component);
             component.setBounds(x, y, w, h);
             revalidate();
-        } catch(IllegalAccessException | InstantiationException e) {
+        } catch(IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
         }
     }
